@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<style>
+#div1, #div2, #div3 {
+  width: 500;
+  height: 50px;
+  margin: 10px;
+  padding: 10px;
+  
+}
+#div2, #div3{
+    border: 1px solid black;
+}
+.row{display: flex;}
+.col1{width:8.33%;}
+.col2{width:16.66%;}
+.col3{width:25%;}
+.col4{width:33.33%;}
+.col5{width:41.66%;}
+.col6{width:50%;}
+.col7{width:58.33%;}
+.col8{width:66.66%;}
+.col9{width:75%;}
+.col10{width:83.33%;}
+.col11{width:91.66%;}
+.col12{width:100%;}
+
+</style>
+<script>
+function allowDrop(ev) {
+  ev.preventDefault();
+}
+
+function drag(ev) {
+  ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+    
+  ev.preventDefault();
+  console.log(ev.target);
+  if(ev.target.childNodes.length == 0 && ev.target.getAttribute('draggable')!="true"){
+    var data = ev.dataTransfer.getData("text");
+    ev.target.appendChild(document.getElementById(data));
+  }
+  
+}
+</script>
+</head>
+<body>
+
+<h2>Sudėkite teisingas poras</h2>
+<p></p>
+
+
+<div class="row">
+    <div class="col6">
+            <div class="row"> 
+                <div id="div2" class="col6" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div id="div3" class="col6" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            </div>
+            <div class="row"> 
+                <div id="div2" class="col6" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+                <div id="div3" class="col6" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            </div>
+    </div>
+
+    <div class="col6">
+            <div id="div1"  ondrop="drop(event)" ondragover="allowDrop(event)">
+                <img src="1.PNG" draggable="true" ondragstart="drag(event)" id="drag1" >
+                <img src="2.PNG" draggable="true" ondragstart="drag(event)" id="drag2" >
+                <img src="3.PNG" draggable="true" ondragstart="drag(event)" id="drag3" >
+                <img src="4.PNG" draggable="true" ondragstart="drag(event)" id="drag4" >
+
+                <img src="5.PNG" draggable="true" ondragstart="drag(event)" id="drag5" >
+                <img src="6.PNG" draggable="true" ondragstart="drag(event)" id="drag6" >
+                <img src="7.PNG" draggable="true" ondragstart="drag(event)" id="drag7" >
+                <img src="8.PNG" draggable="true" ondragstart="drag(event)" id="drag8" >
+
+
+            </div>
+        </div>
+</div>
+
+<div class="row">
+
+</div>
+
+</body>
+</html>
